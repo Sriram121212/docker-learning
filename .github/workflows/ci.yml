@@ -28,3 +28,14 @@ jobs:
 
       - name: Run API tests
         run: pytest
+
+  build-docker:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t docker-learning:1.0 .
